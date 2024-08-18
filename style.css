@@ -3,7 +3,6 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: "Sacramento", system-ui;
     box-sizing: border-box;
     font-size: 20px;
     font-weight: 500;
@@ -35,7 +34,11 @@ h4{
 h5{
     font-family: "Matemasie", system-ui;
 }
+h6{
+    font-family: "Cookie", system-ui;
+}
 p{
+    font-family: "Sacramento", system-ui;
     margin: 15px 0 15px 0;
     font-size: 30px;
 }
@@ -69,6 +72,7 @@ p{
    position: relative;
 }
 #navbar li a{
+    font-family: "Cookie", system-ui;
     text-decoration: none;
     color: black;
     transition: 0.7s ease ;
@@ -110,3 +114,5 @@ p{
     border: 0;
     padding: 10px 20px;
 }
+
+/* FEATURE SECTION */
