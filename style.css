@@ -6,9 +6,11 @@
     font-family: "Sacramento", system-ui;
     box-sizing: border-box;
     font-size: 20px;
+    font-weight: 500;
 }
 body{
     width: 100%;
+    background-color: #f7eeed;
 }
 h1{
     font-family: "Matemasie", system-ui;
@@ -40,12 +42,21 @@ p{
 
 /* HEADER SECTION */
 #header{
+    height: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 80px;
+    padding: 40px 30px 40px 40px;
     background-color: #f7eeed;
-    box-shadow: 0 5px 15px rgb(0, 0, 0,0.06);
+    box-shadow: 0 15px 25px rgb(0, 0, 0,0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+    
+}
+#header #logo{
+    height: 70px;
 }
 #navbar{
     display: flex;
@@ -55,11 +66,48 @@ p{
 #navbar li{
    list-style: none;
    padding: 0 20px;
+   position: relative;
 }
 #navbar li a{
     text-decoration: none;
     color: black;
+    transition: 0.7s ease ;
 }
-#navbar li a:hover{
-    color: #f191ac;
+#navbar li a:hover,
+#navbar li a.active{
+    color: #96163a;
+    font-size: 25px;
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after{
+     content: "";
+     width: 30%;
+     height: 2px;
+     background-color: #96163a;
+     position: absolute;
+     bottom: 2px;
+     left: 20px;
+     
+}
+
+/* HERO SECTION */
+#hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#hero h1{
+    color: #96163a;
+}
+#hero button{
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 600;
+    color: #96163a;
+    background-color: #f7eeed;
+    border: 0;
+    padding: 10px 20px;
 }
