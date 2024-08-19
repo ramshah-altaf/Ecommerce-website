@@ -167,7 +167,7 @@ p{
     flex-wrap: wrap;
 }
 
-/* OUR PRODUCT SECTION */
+/* FEATURED PRODUCT SECTION */
 #product{
     height:1500px;
     background-color: #96163a6f;
@@ -178,7 +178,7 @@ p{
 }
 #product h2{
   text-align: center;
-  padding: 5% 0;
+  padding: 4% 0;
 }
 .pro-box{
     display: flex;
