@@ -234,3 +234,95 @@ p{
 .pro-content p{
     font-size: 25px;
 }
+
+/* BANNER SECTION */
+#banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("images/banner.png");
+    width: 100%;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+}
+#banner p{
+    font-family: "Cookie", system-ui;
+}
+#banner h3{
+    color: #96163a;
+}
+#banner button{
+    font-family: "Cookie", system-ui;
+    background-color: transparent;
+    border: none;
+    color: rgb(58, 125, 154);
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: 500;
+}
+#banner button:hover{
+    font-weight: 600;
+    color: wheat;
+}
+
+/* DISPLAY CARD SECTION */
+#display{
+    text-align: center;
+    padding: 5% 3%;
+}
+.dis-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 40px;
+}
+.dis-card{
+    width: 25%;
+    min-width: 260px;
+    padding: 10px 5px;
+    border-radius:15px ;
+    cursor: pointer;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.114);
+    margin: 15px 5px;
+    transition: 1s ease;
+    position: relative;
+}
+.dis-card:hover{
+  transform: scale(1.1);
+  box-shadow: 0px 0px 50px rgba(250, 248, 249, 0.306);
+}
+.dis-card img{
+    width: 100%;
+    height:250px;
+    border-radius:10px ;
+}
+.des{
+    text-align: start;
+    padding: 0 0 5% 7%;
+}
+.des h3, h4{
+    font-family: "Cookie", system-ui; 
+    line-height: 30px; 
+}
+.des i{
+    color: rgb(222, 137, 10);
+}
+#cart{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #96163a23;
+    color:   #96163af0;
+    border: 1px solid  #96163af0;
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+}
+
+
