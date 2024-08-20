@@ -170,11 +170,10 @@ p{
 /* FEATURED PRODUCT SECTION */
 #product{
     height:1500px;
-    background-color: #96163a6f;
+    background-color: #96163a34;
     padding: 20px 0;
-    box-shadow: 
-      0px -10px 10px #96163a6f, /* Top shadow */
-      0px 10px 10px #96163a6f;  /* Bottom shadow */
+    box-shadow: 0px -10px 10px  #96163a34,
+    0px 10px 10px  #96163a34;
 }
 #product h2{
   text-align: center;
@@ -237,6 +236,7 @@ p{
 
 /* BANNER SECTION */
 #banner{
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -247,6 +247,8 @@ p{
     height: 50vh;
     background-position: center;
     background-size: cover;
+    box-shadow: 0px 15px 50px rgba(211, 6, 78, 0.169),
+                inset 0px -15px 50px rgba(211, 6, 78, 0.169);
 }
 #banner p{
     font-family: "Cookie", system-ui;
@@ -286,7 +288,7 @@ p{
     padding: 10px 5px;
     border-radius:15px ;
     cursor: pointer;
-    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.114);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.183);
     margin: 15px 5px;
     transition: 1s ease;
     position: relative;
@@ -325,4 +327,58 @@ p{
     right: 15px;
 }
 
+
+/* NEWS LETTER SECTION */
+#newsletter{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: 20% 30%;
+    margin: 20px 0;
+    padding: 40px 30px 30px 35px ;
+    background-color: #780d2b;
+}
+.news-text h3{
+    font-family: "Cookie", system-ui; 
+    font-weight: 500;
+    font-size: 35px;
+    color: #f7eeed;
+}
+.news-text p{
+    font-size: 25px;
+    color: wheat;
+}
+.news-text span{
+    color: #ff0149;
+    font-size:27px ;
+ 
+}
+.form{
+    display: flex;
+    width: 40%;
+}
+.form input{
+    height: 2.5rem;
+    padding: 0 1.25em;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    outline: none;
+}
+.form button{
+    background-color:wheat ;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
