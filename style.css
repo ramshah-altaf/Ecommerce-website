@@ -337,7 +337,7 @@ p{
     background-image: url();
     background-repeat: no-repeat;
     background-position: 20% 30%;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
     padding: 40px 30px 30px 35px ;
     background-color: #780d2b;
 }
@@ -392,7 +392,7 @@ footer{
 .footer-container{
     display: flex;
     justify-content: space-evenly;
-    padding: 20px 20px;
+    padding: 50px 20px 20px 20px;
    
 }
 .footer-container::after{
@@ -437,6 +437,9 @@ footer a{
     list-style: none;
     text-align: center;
     line-height: 25px;
+}
+.footer-social i{
+   margin: 10px 5px;
 }
 
 .footer-bottom p{
