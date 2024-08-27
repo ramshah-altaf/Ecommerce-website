@@ -662,3 +662,59 @@ footer a{
     font-family: "Sacramento", system-ui;
     font-size: 25px;
 }
+
+
+/* ...................................... */
+/* BLOG PAGE STYLING STARTS HERE */
+
+#blog{
+    padding: 100px 100px 0 100px;
+}
+.blogBox{
+    display: flex;
+    position: relative;
+    padding-bottom: 90px;
+}
+.blogImg img{
+    width: 30vw;
+    z-index: 1;
+}
+.blogDetails{
+    padding: 5px 0 0 30px;
+}
+.blogDetails p{
+    font-size: 23px;
+}
+.blogDetails a{
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+    position: relative;
+    transition: 0.5s;
+}
+.blogDetails a::after{
+    content: "";
+    width: 50px;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    top: 6px;
+    right: -60px;
+}
+.blogDetails a:hover{
+    color: #c5325c;
+}
+.blogDetails a:hover::after{
+    background-color: #c5325c ;
+}
+.blogBox h1{
+    font-family: "Cookie", system-ui;
+    font-weight: 600;
+    position: absolute;
+    top: -42px;
+    left: 0;
+    font-size: 70px;
+    color: wheat;
+    z-index: -9;
+}
