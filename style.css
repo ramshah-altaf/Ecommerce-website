@@ -718,3 +718,78 @@ footer a{
     color: wheat;
     z-index: -9;
 }
+
+
+/* ........................................*/
+/* CONTACT PAGE STYLING STARTS HERE */
+
+#contactDetails{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+}
+.details{
+    width: 40%;
+}
+.details span,#formDetails form span{
+    font-size: 15px;
+}
+.details h2,#formDetails form h2{
+    padding: 20px 0;
+    font-size: 26px;
+    line-height: 35px;
+}
+.details h3{
+    font-size: 15px;
+}
+.details li{
+    list-style: none;
+    display: flex;
+    padding: 7px 0;
+}
+.details li i{
+    padding-right: 22px;
+    font-size: 15px;
+}
+.details li p{
+    margin: 0;
+    font-size: 15px;
+}
+.map{
+    width: 55%;
+    height: 300px;
+}
+.map iframe{
+    width: 100%;
+    height: 100%;
+}
+#formDetails{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+#formDetails form{
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  outline: 1px solid black;
+  border-radius: 10px;
+  background-color: #c5325c;
+}
+#formDetails form input,#formDetails form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+#formDetails form button{
+    padding: 10px 15px;
+    background-color: #ebc1cd;
+    color: black;
+    border: none  ;
+    border-radius: 4px;
+}
