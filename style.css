@@ -793,3 +793,112 @@ footer a{
     border: none  ;
     border-radius: 4px;
 }
+
+
+/* ................................. */
+/* CART PAGE STYLING STARTS HERE */
+#cart-sec{
+    padding: 50px;
+}
+#cart-sec table{
+   width: 100%;
+   border-collapse: collapse;
+   white-space: nowrap;
+   table-layout: fixed;
+}
+#cart-sec table img{
+    width: 60px;
+}
+#cart-sec table td:nth-child(1){
+    width: 100px;
+    text-align: center;
+}
+#cart-sec table td:nth-child(1) i{
+    color: #c5325c;
+}
+#cart-sec table td:nth-child(2){
+    width: 150px;
+    text-align: center;
+}
+#cart-sec table td:nth-child(3){
+    width: 250px;
+    text-align: center;
+}
+#cart-sec table td:nth-child(4),
+#cart-sec table td:nth-child(5),
+#cart-sec table td:nth-child(6){
+    width: 150px;
+    text-align: center;
+}
+#cart-sec table td:nth-child(5) input{
+    width: 60px;
+    padding: 10px 5px 10px 15px;
+    font-size: 15px;
+}
+#cart-sec table thead{
+    border:1px solid palevioletred;
+    border-left: none;
+    border-right: none;
+}
+#cart-sec table thead td{
+    padding: 18px 0;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+#cart-sec table tbody tr td{
+    padding-top:15px ;
+}
+#cart-sec table tbody  td{
+    font-size: 15px;
+}
+#cart-add{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px;
+}
+#coupon{
+    width: 50%;
+    margin-bottom: 30px;
+}
+#coupon h3, #subtotal h3{
+    padding-bottom: 15px;
+}
+#coupon input{
+    padding: 12px 20px;
+    font-size: 15px;
+    outline: none;
+    width: 60%;
+    margin-right: 10;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+#coupon button,#subtotal button{
+    padding: 12px 20px;
+    font-size: 15px;
+    background-color: #c5325c;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+#subtotal{
+    width: 50%;
+    margin-bottom: 30px;
+    border: 1px solid black;
+    padding: 30px;
+}
+#subtotal table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-left: 7px;
+    margin-bottom: 13px;
+}
+#subtotal table td{
+    width: 50%;
+    border: 1px solid pink;
+    font-size: 13px;
+    padding: 10px;
+}
+#subtotal button{
+    margin-left: 25%;
+}
