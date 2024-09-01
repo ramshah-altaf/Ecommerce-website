@@ -110,7 +110,7 @@ p{
 /* HERO SECTION */
 #hero {
     width: 100%;
-    height: 90vh;
+    height: 50vh;
     padding-top: 30px;
     display: flex;
     align-items: center;
@@ -467,106 +467,6 @@ footer a{
 
 
 
-/*...... MEDIA QUERIES STARTS FROM HERE..... */
-@media (max-width:799px ) {
-    #navbar {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items:flex-start;
-        position: fixed;
-        top: 0;
-        right:-300px;
-        height: 100vh;
-        width: 300px;
-        background-color: #680521;
-        padding: 80px 0 0 10px;
-        transition: right 1s ease;
-    }
-    #navbar.active{
-        right: 0px; 
-        
-    }
-    #navbar li{
-        margin-bottom: 20px;
-       
-    }
-    #navbar li a{
-        color: wheat;
-    }
-    #mobile{
-        display: flex;
-        justify-content: center;
-    }
-    #mobile i{
-        color: black;
-        font-size: 20px;
-        padding-left: 20px;
-    }
-    #close{
-        display: initial;
-        position: absolute;
-        top: 30px;
-        left: 30px;
-        color: wheat;
-        font-size: 25px;
-    }
-    #lg-bag{
-        display: none;
-    }
-
-    /* HERO SECTION */
-    #hero {
-        height: 50vh; 
-       margin-top: 20px;
-    }
-
-    /* FEATURE SECTION */
-    .fe-box{
-        width: 20vw;
-    }
-
-    /* FEATURED SECTION */
-    .pro-box img{
-        height: 53%;
-        width: 26% ;
-        left: 12%;
-    }
-    .pro-content{
-        width:54vw;
-        height: 320px;
-        left: 31%;
-
-    }
-    #product .pro-box:nth-child(2) img{
-        left: 12%;
-    }
-    #product .pro-box:nth-child(3) img{
-        left: 60%;
-    }
-    #product .pro-box:nth-child(2) .pro-content{
-        left: 31%;
-    }
-    #product .pro-box:nth-child(3) .pro-content{
-        left: 14%;
-    }
-
-    /*BANNER SECTION*/
-    #banner{
-        height: 27vh;
-        background-size: cover;
-    }
-
-    /* NEWS LETTER SECTION */
-    .form{
-        display: flex;
-        width: 60%;
-    }
-
-}
-
-
-
 /* ......................................................*/
 /* SHOP PAGE STYLING STARTS HERE */
 
@@ -901,4 +801,156 @@ footer a{
 }
 #subtotal button{
     margin-left: 25%;
+}
+
+
+
+
+
+
+
+/*...... MEDIA QUERIES STARTS FROM HERE..... */
+@media(max-width:576px){
+    #hero {
+        display: block;
+        height: 50vh; 
+        margin-top: 0;
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    #feature .fe-box{
+        width: 30vw;
+    }
+    
+    .pro-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: static;
+        height: 500px;
+        margin: 50px 0;
+    }
+    .pro-box img{
+        height: 250px;
+        width:40vw ;
+        position:static;
+        left: none;
+        
+    }
+    .pro-content{
+        background-color: #f7eeed;
+        width:50vw;
+        height: 320px;
+        margin-top: 10px;
+        padding: 10px ;
+        position: static;
+        left: none;
+
+    }
+}
+
+@media (max-width:768px ) {
+    #hero {
+        height: 50vh; 
+        margin-top: 0px;
+        padding: 0 20px;
+    }
+    .fe-box{
+        width: 30vw;
+        padding-bottom: 25px;
+    }
+
+    /* FEATURED SECTION */
+    .pro-box img{
+        height: 53%;
+        width: 26% ;
+        left: 12%;
+    }
+    .pro-content{
+        width:54vw;
+        height: 320px;
+        left: 31%;
+
+    }
+    #product .pro-box:nth-child(2) img{
+        left: 12%;
+    }
+    #product .pro-box:nth-child(3) img{
+        left: 60%;
+    }
+    #product .pro-box:nth-child(2) .pro-content{
+        left: 31%;
+    }
+    #product .pro-box:nth-child(3) .pro-content{
+        left: 14%;
+    }
+
+    /*BANNER SECTION*/
+    #banner{
+        height: 27vh;
+        background-size: cover;
+    }
+
+    /* NEWS LETTER SECTION */
+    .form{
+        display: flex;
+        width: 60%;
+        
+    }
+
+}
+
+@media(max-width:992px){
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items:flex-start;
+        position: fixed;
+        top: 0;
+        right:-300px;
+        height: 100vh;
+        width: 300px;
+        background-color: #680521;
+        padding: 80px 0 0 10px;
+        transition: right 1s ease;
+    }
+    #navbar.active{
+        right: 0px; 
+        
+    }
+    #navbar li{
+        margin-bottom: 20px;
+       
+    }
+    #navbar li a{
+        color: wheat;
+    }
+    #mobile{
+        display: flex;
+        justify-content: center;
+    }
+    #mobile i{
+        color: black;
+        font-size: 20px;
+        padding-left: 20px;
+    }
+    #close{
+        display: initial;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        color: wheat;
+        font-size: 25px;
+    }
+    #lg-bag{
+        display: none;
+    }
+
+    #hero {
+        height: 40vh; 
+        margin-top: 0px;
+        padding: 0 20px;
+    }
 }
