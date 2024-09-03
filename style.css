@@ -570,10 +570,6 @@ footer a{
 #blog{
     padding: 100px 100px 0 100px;
 }
-#blog-banner img{
-    width: 100%;
-    height: 45vh;
-} 
 .blogBox{
     display: flex;
     position: relative;
@@ -814,10 +810,55 @@ footer a{
 
 
 /*...... MEDIA QUERIES STARTS FROM HERE..... */
-@media(max-width:576px){
+@media only screen and (min-width: 0px) and (max-width: 576px){
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items:flex-start;
+        position: fixed;
+        top: 0;
+        right:-300px;
+        height: 100vh;
+        width: 300px;
+        background-color: #680521;
+        padding: 80px 0 0 10px;
+        transition: right 1s ease;
+    }
+    #navbar.active{
+        right: 0px; 
+        
+    }
+    #navbar li{
+        margin-bottom: 20px;
+       
+    }
+    #navbar li a{
+        color: wheat;
+    }
+    #mobile{
+        display: flex;
+        justify-content: center;
+    }
+    #mobile i{
+        color: black;
+        font-size: 20px;
+        padding-left: 20px;
+    }
+    #close{
+        display: initial;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        color: wheat;
+        font-size: 25px;
+    }
+    #lg-bag{
+        display: none;
+    }
     #hero {
         display: block;
-        height: 50vh; 
+        height: 70vh; 
         margin-top: 0;
         padding: 10px 20px;
         text-align: center;
@@ -884,19 +925,15 @@ footer a{
     }
 
     /* SHOP PAGE STYLING STARTS HERE */
-    #shop-banner img{
-      width: 100%;
-      height: 33vh;
+    #shop-banner img {
+        width: 100%;
+        height: 25vh;
     }
 
     /* BLOG PAGE STYLING STARTS HERE */
     #blog{
         padding: 60px 25px;
-    }  
-    #blog-banner img{
-        width: 100%;
-        height: 20vh;
-    }  
+    }   
     .blogBox{
         display: flex;
         flex-direction: column;
@@ -913,7 +950,52 @@ footer a{
     
 }
 
-@media (max-width:768px ) {
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+    #navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items:flex-start;
+        position: fixed;
+        top: 0;
+        right:-300px;
+        height: 100vh;
+        width: 300px;
+        background-color: #680521;
+        padding: 80px 0 0 10px;
+        transition: right 1s ease;
+    }
+    #navbar.active{
+        right: 0px; 
+        
+    }
+    #navbar li{
+        margin-bottom: 20px;
+       
+    }
+    #navbar li a{
+        color: wheat;
+    }
+    #mobile{
+        display: flex;
+        justify-content: center;
+    }
+    #mobile i{
+        color: black;
+        font-size: 20px;
+        padding-left: 20px;
+    }
+    #close{
+        display: initial;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        color: wheat;
+        font-size: 25px;
+    }
+    #lg-bag{
+        display: none;
+    }
     #hero {
         height: 50vh; 
         margin-top: 0px;
@@ -925,7 +1007,6 @@ footer a{
         padding-bottom: 25px;
     }
 
-    
     #product .pro-box img{
         height: 200px;
         width:auto ;
@@ -964,14 +1045,10 @@ footer a{
     /* SHOP PAGE STYLING STARTS HERE */
     #shop-banner img{
         width: 100%;
-        height: 45vh;
+        height: 35vh;
     }
 
-    /* BLOG PAGE STYLING STARTS HERE */
-    #blog-banner img{
-        width: 100%;
-        height: 30vh;
-    }  
+    /* BLOG PAGE STYLING STARTS HERE */ 
     .blogBox{
         display: flex;
         flex-direction: column;
@@ -988,7 +1065,7 @@ footer a{
     
 }
 
-@media(max-width:992px){
+@media only screen and (min-width: 768px) and (max-width: 992px){
     #navbar {
         display: flex;
         flex-direction: column;
@@ -1064,5 +1141,11 @@ footer a{
     #product .pro-box:nth-child(3) .pro-content{
         left: 26%;
         padding-left: 50px;
+    }
+
+    /* SHOP PAGE STYLING STARTS HERE */
+    #shop-banner img{
+        width: 100%;
+        height: 45vh;
     }
 }
