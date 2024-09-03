@@ -570,6 +570,10 @@ footer a{
 #blog{
     padding: 100px 100px 0 100px;
 }
+#blog-banner img{
+    width: 100%;
+    height: 45vh;
+} 
 .blogBox{
     display: flex;
     position: relative;
@@ -879,7 +883,34 @@ footer a{
         padding-bottom: 20px;
     }
 
+    /* SHOP PAGE STYLING STARTS HERE */
+    #shop-banner img{
+      width: 100%;
+      height: 33vh;
+    }
 
+    /* BLOG PAGE STYLING STARTS HERE */
+    #blog{
+        padding: 60px 25px;
+    }  
+    #blog-banner img{
+        width: 100%;
+        height: 20vh;
+    }  
+    .blogBox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding-bottom: 90px;
+    }
+    .blogDetails{
+        text-align: center;
+    }
+    .blogBox h1{
+        left: 37%;
+    }
+    
 }
 
 @media (max-width:768px ) {
@@ -929,6 +960,32 @@ footer a{
         display: flex;
         width: 70%;
     }
+
+    /* SHOP PAGE STYLING STARTS HERE */
+    #shop-banner img{
+        width: 100%;
+        height: 45vh;
+    }
+
+    /* BLOG PAGE STYLING STARTS HERE */
+    #blog-banner img{
+        width: 100%;
+        height: 30vh;
+    }  
+    .blogBox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding-bottom: 90px;
+    }
+    .blogDetails{
+        text-align: center;
+    }
+    .blogBox h1{
+        left: 37%;
+    }
+    
 }
 
 @media(max-width:992px){
