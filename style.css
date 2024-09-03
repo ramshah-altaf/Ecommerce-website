@@ -947,6 +947,23 @@ footer a{
     .blogBox h1{
         left: 37%;
     }
+
+    /* CONTACT PAGE STYLING STARTS HERE */
+    #contactDetails{
+      display: flex;
+      flex-direction: column;
+      padding: 30px 10px;
+    }
+    .details{
+        width: 70%;
+        text-align: center;
+    }
+    .map{
+        width: 70%;
+        height: 200px;
+        margin: 40px 0;
+    }
+
     
 }
 
@@ -1062,6 +1079,23 @@ footer a{
     .blogBox h1{
         left: 37%;
     }
+    
+     /* CONTACT PAGE STYLING STARTS HERE */
+     #contactDetails{
+        display: flex;
+        flex-direction: column;
+        padding: 30px 10px;
+      }
+      .details{
+          width: 70%;
+          text-align: center;
+      }
+      .map{
+          width: 70%;
+          height: 200px;
+          margin: 40px 0;
+      }
+
     
 }
 
