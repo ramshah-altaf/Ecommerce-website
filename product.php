@@ -1,3 +1,23 @@
+<?php
+include 'db-connect.php';
+
+// Get the product ID from the URL
+$product_id = isset($_GET['id']) ? $_GET['id'] : 1;
+
+// Fetch product data from the database
+$sql = "SELECT * FROM products WHERE id = $product_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+} else {
+    echo "Product not found.";
+    exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +48,7 @@
    </section>
       <!-- DETAIL SECTION -->
        <section id="proDetail">
-        <div class="sig-pro-img">
+        <!-- <div class="sig-pro-img">
             <img src="images/product-imgs/i1.png" alt="" id="mainImg" width="100%" >
             <div class="sm-img-grp">
 
@@ -49,12 +69,27 @@
                 </div>
             
             </div>
-        </div>
+        </div> -->
+        <div class="sig-pro-img">
+    <img src="images/product-imgs/<?php echo $row['main_image']; ?>" alt="" id="mainImg" width="100%" >
+    <div class="sm-img-grp">
+        <?php
+        // Assuming you store image paths as a comma-separated string
+        $images = explode(',', $row['additional_images']);
+        foreach ($images as $image) {
+            echo '<div class="sm-img-col">';
+            echo '<img src="images/product-imgs/'.$image.'" alt="" class="smImg" width="100%" >';
+            echo '</div>';
+        }
+        ?>
+    </div>
+</div>
+
         
         <div class="sig-pro-details">
-          <h6>Home/Frocks</h6>
-          <h4>Girl's Fashion Frocks</h4>
-          <h3>Rs.1000</h3>
+          <h6>Home/<?php echo $row['category']; ?></h6>
+          <h4><?php echo $row['product_name']; ?></h4>
+          <h3>Rs.<?php echo $row['price']; ?></h3>
           <select>
             <option>Select size</option>
             <option>premature</option>
@@ -64,7 +99,7 @@
           <input type="number" value="1">
           <button type="button">Add to cart</button>
           <h3>Product details</h3>
-          <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore voluptatibus eius enim sed. Totam, consectetur quibusdam .</span>
+          <span><?php echo $row['description']; ?></span>
         </div>
        </section>
 

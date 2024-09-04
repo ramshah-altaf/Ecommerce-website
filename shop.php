@@ -1,3 +1,13 @@
+<?php
+// Include the database connection
+include 'db-connect.php';
+
+// Fetch product data
+$sql = "SELECT * FROM products";
+$result = $conn->query($sql);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,42 +43,9 @@
       </section>
 
       <!-- .....DISPLAY CARD SECTION -->
-       <section id="display">
+       <!-- <section id="display">
         
-        <div class="dis-box">
-            <div class="dis-card" onclick="window.location.href='prodetail.html';">
-               <img src="images/cloth2.png" alt="">
-               <div class="des">
-                <h3>Maroon Frock</h3>
-                <div class="star">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <h4>Rs.1000</h4>
-               </div>
-               <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-
-            <div class="dis-card">
-              <img src="images/cloth2.png" alt="">
-              <div class="des">
-               <h3>Maroon Frock</h3>
-               <div class="star">
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-               </div>
-               <h4>Rs.1000</h4>
-              </div>
-              <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-            
-            <div class="dis-card">
+        <div class="dis-box"> class="dis-card">
               <img src="images/cloth2.png" alt="">
               <div class="des">
                <h3>Maroon Frock</h3>
@@ -180,7 +157,32 @@
               <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
             </div>
         </div>
-       </section>
+       </section> -->
+
+       
+       <section id="display">
+   <div class="dis-box">
+    <?php while($row = $result->fetch_assoc()) { ?>
+      <div class="dis-card">
+        <img src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>">
+        <div class="des">
+          <h3><?php echo $row['name']; ?></h3>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>Rs.<?php echo $row['price']; ?></h4>
+        </div>
+        <!-- <a href="product.php?id=<?php echo $row['id']; ?>"><i class="fas fa-cart-shopping" id="cart"></i></a> -->
+        <a href="product.php?id=1"><i class="fas fa-cart-shopping" id="cart"></i></a>
+
+      </div>
+    <?php } ?>
+  </div>
+</section>
 
        <section id="pagination">
          <a href="#">1</a>
