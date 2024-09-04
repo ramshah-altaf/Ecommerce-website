@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 </head>
 <body>
    <section id="header">
-    <a href="#"><img id="logo" src="C:\Users\HP\3D Objects\Desktop\WEBSITE\Ecommerce-website\images\logo.png" alt="logo"></a>
+    <a href="#"><img id="logo" src="images\logo.png" alt="logo"></a>
 
     <div>
       <ul id="navbar">
@@ -161,28 +161,34 @@ $result = $conn->query($sql);
 
        
        <section id="display">
-   <div class="dis-box">
-    <?php while($row = $result->fetch_assoc()) { ?>
-      <div class="dis-card">
-        <img src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>">
-        <div class="des">
-          <h3><?php echo $row['name']; ?></h3>
-          <div class="star">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <h4>Rs.<?php echo $row['price']; ?></h4>
-        </div>
-        <!-- <a href="product.php?id=<?php echo $row['id']; ?>"><i class="fas fa-cart-shopping" id="cart"></i></a> -->
-        <a href="product.php?id=1"><i class="fas fa-cart-shopping" id="cart"></i></a>
+         <div class="dis-box">
+           <?php while($row = $result->fetch_assoc()) { ?>
+          <div class="dis-card">
 
-      </div>
-    <?php } ?>
-  </div>
-</section>
+          <?php
+            $images = explode(',', $row['images']);
+            $mainImage = $images[0]; // Assuming the first image is the main image
+          ?>
+          <img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%">
+
+            <div class="des">
+               <h3><?php echo $row['name']; ?></h3>
+               <div class="star">
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+               </div>
+               <h4>Rs.<?php echo $row['price']; ?></h4>
+            </div>
+       
+            <a href="product.php?id=1"><i class="fas fa-cart-shopping" id="cart"></i></a>
+
+          </div>
+          <?php } ?>
+        </div>
+      </section>
 
        <section id="pagination">
          <a href="#">1</a>

@@ -1,5 +1,5 @@
 <?php
-include 'db-connect.php';
+include 'C:\xampp\htdocs\WEBSITE\Ecommerce-website\db_connect.php';
 
 // Get the product ID from the URL
 $product_id = isset($_GET['id']) ? $_GET['id'] : 1;
@@ -29,12 +29,12 @@ if ($result->num_rows > 0) {
 </head>
 <body>
    <section id="header">
-    <a href="#"><img id="logo" src="C:\Users\HP\3D Objects\Desktop\WEBSITE\Ecommerce-website\images\logo.png" alt="logo"></a>
+    <a href="#"><img id="logo" src="images\logo.png" alt="logo"></a>
 
     <div>
       <ul id="navbar">
         <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="shop.html">Shop</a></li>
+        <li><a class="active" href="shop.php">Shop</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
@@ -70,25 +70,31 @@ if ($result->num_rows > 0) {
             
             </div>
         </div> -->
+        
         <div class="sig-pro-img">
-    <img src="images/product-imgs/<?php echo $row['main_image']; ?>" alt="" id="mainImg" width="100%" >
-    <div class="sm-img-grp">
-        <?php
-        // Assuming you store image paths as a comma-separated string
-        $images = explode(',', $row['additional_images']);
-        foreach ($images as $image) {
-            echo '<div class="sm-img-col">';
-            echo '<img src="images/product-imgs/'.$image.'" alt="" class="smImg" width="100%" >';
-            echo '</div>';
-        }
-        ?>
-    </div>
-</div>
+          <?php
+            $images = explode(',', $row['images']);
+            $mainImage = $images[0]; // Assuming the first image is the main image
+          ?>
+          <img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%">
+
+          <div class="sm-img-grp">
+            <?php
+            foreach ($images as $image) {
+              echo '<div class="sm-img-col">';
+              echo '<img src="images/product-imgs/'.$image.'" alt="" class="smImg" width="100%">';
+              echo '</div>';
+            }
+            ?>
+          </div>
+        </div>
+
+
 
         
         <div class="sig-pro-details">
-          <h6>Home/<?php echo $row['category']; ?></h6>
-          <h4><?php echo $row['product_name']; ?></h4>
+          <h6>Home/<?php echo $row['catagory']; ?></h6>
+          <h4><?php echo $row['name']; ?></h4>
           <h3>Rs.<?php echo $row['price']; ?></h3>
           <select>
             <option>Select size</option>
