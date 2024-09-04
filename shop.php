@@ -163,13 +163,13 @@ $result = $conn->query($sql);
        <section id="display">
          <div class="dis-box">
            <?php while($row = $result->fetch_assoc()) { ?>
-          <div class="dis-card">
 
-          <?php
-            $images = explode(',', $row['images']);
-            $mainImage = $images[0]; // Assuming the first image is the main image
-          ?>
-          <img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%">
+          <div class="dis-card">
+            <?php
+              $images = explode(',', $row['images']);
+              $mainImage = $images[0]; // Assuming the first image is the main image
+            ?>
+            <img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%">
 
             <div class="des">
                <h3><?php echo $row['name']; ?></h3>
@@ -183,10 +183,12 @@ $result = $conn->query($sql);
                <h4>Rs.<?php echo $row['price']; ?></h4>
             </div>
        
-            <a href="product.php?id=1"><i class="fas fa-cart-shopping" id="cart"></i></a>
+            <a href="product.php?id=<?php echo $row['id']; ?>"><i class="fas fa-cart-shopping" id="cart"></i></a>
 
           </div>
+          
           <?php } ?>
+
         </div>
       </section>
 
