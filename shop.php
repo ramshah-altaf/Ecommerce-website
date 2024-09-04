@@ -1,6 +1,6 @@
 <?php
 // Include the database connection
-include 'db-connect.php';
+include 'C:\xampp\htdocs\WEBSITE\Ecommerce-website\db_connect.php';
 
 // Fetch product data
 $sql = "SELECT * FROM products";
@@ -24,7 +24,7 @@ $result = $conn->query($sql);
     <div>
       <ul id="navbar">
         <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="shop.html">Shop</a></li>
+        <li><a class="active" href="shop.php">Shop</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
