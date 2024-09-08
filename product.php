@@ -48,28 +48,6 @@ if ($result->num_rows > 0) {
    </section>
       <!-- DETAIL SECTION -->
        <section id="proDetail">
-        <!-- <div class="sig-pro-img">
-            <img src="images/product-imgs/i1.png" alt="" id="mainImg" width="100%" >
-            <div class="sm-img-grp">
-
-                <div class="sm-img-col">
-                    <img src="images/product-imgs/i1.png" alt="" class="smImg" width="100%" >
-                </div>
-
-                <div class="sm-img-col">
-                    <img src="images/product-imgs/i2.jpg" alt="" class="smImg" width="100%" >
-                </div>
-
-                <div class="sm-img-col">
-                    <img src="images/product-imgs/i3.jpg" alt="" class="smImg" width="100%" >
-                </div>
-
-                <div class="sm-img-col">
-                    <img src="images/product-imgs/i4.jpg" alt="" class="smImg" width="100%" >
-                </div>
-            
-            </div>
-        </div> -->
         
         <div class="sig-pro-img">
           <?php
@@ -88,9 +66,6 @@ if ($result->num_rows > 0) {
             ?>
           </div>
         </div>
-
-
-
         
         <div class="sig-pro-details">
           <h6>Home/<?php echo $row['catagory']; ?></h6>

@@ -26,9 +26,9 @@ let cart = [
   ];
   
 
-  function renderCart() {
-    const cartTableBody = document.querySelector('tbody');
-    cartTableBody.innerHTML = ''; // Clear the current items
+function renderCart() {
+    const cartTableBody = document.querySelector('#cartTableBody');
+    cartTableBody.innerHTML = ""; // Clear the current items
   
     cart.forEach(item => {
       const row = document.createElement('tr');
@@ -76,7 +76,7 @@ function updateCartSummary() {
   }
   
 
-// Connecting to Checkout Button.....
+// f)Connecting to Checkout Button.....
 document.querySelector('#checkout-btn').addEventListener('click', function() {
     if (cart.length === 0) {
       alert('Your cart is empty!');
@@ -87,5 +87,31 @@ document.querySelector('#checkout-btn').addEventListener('click', function() {
     }
   });
   
+
+
+  // g) Creating local backup of cart items.....
+  // 1.Add Item to Cart:
+  function addToCart(productId, quantity) {
+    const userId = 1; // Replace with actual user ID from your authentication system
+
+    fetch('/cart.php', {
+        method: 'POST',
+        body: new URLSearchParams({
+            action: 'add',
+            user_id: userId,
+            product_id: productId,
+            quantity: quantity
+        }),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Product added to cart');
+            renderCart(); // Update the cart display
+        }
+    });
+}
+
 
   

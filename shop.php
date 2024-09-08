@@ -1,3 +1,4 @@
+
 <?php
 // Include the database connection
 include 'C:\xampp\htdocs\WEBSITE\Ecommerce-website\db_connect.php';
@@ -167,7 +168,7 @@ $result = $conn->query($sql);
           <div class="dis-card">
             <?php
               $images = explode(',', $row['images']);
-              $mainImage = $images[0]; // Assuming the first image is the main image
+              $mainImage = $images[1]; // Assuming the first image is the main image
             ?>
             <img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%">
 
