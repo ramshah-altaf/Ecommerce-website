@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
             <option>1</option>
           </select>
           <input type="number" value="1">
-          <button type="button">Add to cart</button>
+          <button type="button" id="add-to-cart-btn" >Add to Cart</button>
           <h3>Product details</h3>
           <span><?php echo $row['description']; ?></span>
         </div>
@@ -199,23 +199,6 @@ if ($result->num_rows > 0) {
         </div>
       </footer>
       
-   <script>
-    let MainImg = document.getElementById("mainImg");
-    let SmallImg = document.getElementsByClassName("smImg");
-
-    SmallImg[0].onclick = function(){
-        MainImg.src = SmallImg[0].src;
-    }
-    SmallImg[1].onclick = function(){
-        MainImg.src = SmallImg[1].src;
-    }
-    SmallImg[2].onclick = function(){
-        MainImg.src = SmallImg[2].src;
-    }
-    SmallImg[3].onclick = function(){
-        MainImg.src = SmallImg[3].src;
-    }
-   </script>
     
     <script src="script.js"></script>
 </body>
