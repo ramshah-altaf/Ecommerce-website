@@ -18,134 +18,111 @@ if (close) {
 
 
 
-// ......................
-let MainImg = document.getElementById("mainImg");
+// Product images changing function,...
+window.onload = function() {
+    let MainImg = document.getElementById("mainImg");
     let SmallImg = document.getElementsByClassName("smImg");
 
-    SmallImg[0].onclick = function(){
-        MainImg.src = SmallImg[0].src;
+   // Loop through each small image and attach click events
+    for (let i = 0; i < SmallImg.length; i++) {
+        SmallImg[i].onclick = function() {
+            MainImg.src = SmallImg[i].src;
+        }
     }
-    SmallImg[1].onclick = function(){
-        MainImg.src = SmallImg[1].src;
-    }
-    SmallImg[2].onclick = function(){
-        MainImg.src = SmallImg[2].src;
-    }
-    SmallImg[3].onclick = function(){
-        MainImg.src = SmallImg[3].src;
-    }
+}
+
+
 
 
 // ..........SHOPPING CART FUNCTIONALITY.....
-document.addEventListener('DOMContentLoaded', function() {
-  let cart = [];
+// cart funtioning using local storage......
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  function addToCart(id, name, price, image) {
-    const existingItem = cart.find(item => item.id === id);
+// Function to add an item to the cart
+function addToCart(productId, productName, productPrice) {
+    const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
 
-    if (existingItem) {
-      existingItem.quantity += 1; // If the item is already in the cart, increase the quantity
+// Check if product already in cart
+    const existingProduct = cart.find(item => item.id === productId);
+    if (existingProduct) {
+        existingProduct.quantity += 1;
     } else {
-      // If the item is not in the cart, add it
-      cart.push({ id, name, price, quantity: 1, image });
+        cart.push(product);
     }
 
-    renderCart(); // Re-render the cart with the updated items
-  }
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save to local storage
+    alert(productName + " added to cart!");
+}
 
-  function renderCart() {
-    const cartTableBody = document.querySelector('#cartTableBody');
-    console.log(cartTableBody); // Check if this logs the correct element or null
+// Event listener for "Add to Cart" button (product page)
+const addToCartBtn = document.getElementById('add-to-cart-btn');
+if (addToCartBtn) {
+    addToCartBtn.addEventListener('click', function() {
+        const productId = this.getAttribute('data-id');
+        const productName = this.getAttribute('data-name');
+        const productPrice = this.getAttribute('data-price');
+        
+        addToCart(productId, productName, productPrice);
+    });
+}
 
-    if (!cartTableBody) {
-      console.error('Cart table body not found');
-      return;
-    }
+// Function to display cart items on the cart page
+function displayCartItems() {
+    const cartTableBody = document.getElementById('cartTableBody');
+    if (!cartTableBody) return; // Ensure cartTableBody exists before continuing
 
-    cartTableBody.innerHTML = ""; // Clear the current items to prevent duplicate entries
+    cartTableBody.innerHTML = ''; // Clear the cart table first
 
-    cart.forEach(item => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td><a href="#" onclick="removeFromCart(${item.id})"><i class="fas fa-times-circle"></i></a></td>
-        <td><img src="${item.image}" alt="${item.name}"></td>
-        <td>${item.name}</td>
-        <td>Rs. ${item.price}</td>
-        <td><input type="number" value="${item.quantity}" onchange="updateQuantity(${item.id}, this.value)"></td>
-        <td>Rs. ${item.price * item.quantity}</td>
-      `;
-      cartTableBody.appendChild(row);
+    cart.forEach(product => {
+        cartTableBody.innerHTML += `
+            <tr>
+                <td><button class="remove-btn" data-id="${product.id}">Remove</button></td>
+                <td><img src="images/product-imgs/${product.id}.png" alt="${product.name}" width="50"></td>
+                <td>${product.name}</td>
+                <td>Rs.${product.price}</td>
+                <td><input type="number" value="${product.quantity}" min="1" class="quantity-input" data-id="${product.id}"></td>
+                <td>Rs.${product.price * product.quantity}</td>
+            </tr>
+        `;
     });
 
-    updateCartSummary(); // Ensure this updates the cart total
-  }
+    // Attach event listeners for "Remove" buttons
+    document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-id');
+            removeFromCart(productId);
+        });
+    });
 
-  function updateQuantity(productId, newQuantity) {
-    const product = cart.find(item => item.id === productId);
+    // Attach event listeners for quantity inputs
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('change', function() {
+            const productId = this.getAttribute('data-id');
+            const newQuantity = this.value;
+            updateQuantity(productId, newQuantity);
+        });
+    });
+}
+
+// Function to remove an item from the cart
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== parseInt(productId));
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCartItems();
+}
+
+// Function to update the quantity of a product
+function updateQuantity(productId, newQuantity) {
+    const product = cart.find(item => item.id === parseInt(productId));
     if (product) {
-      product.quantity = Number(newQuantity);
-      renderCart(); // Re-render the cart after updating
+        product.quantity = parseInt(newQuantity);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCartItems(); // Update the cart UI
     }
-  }
+}
 
-  function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    renderCart(); // Re-render the cart after removing the item
-  }
+// Call displayCartItems on cart page load
+if (document.getElementById('cartTableBody')) {
+    window.onload = displayCartItems;
+}
 
-  function updateCartSummary() {
-    const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    const shipping = 0; // Set your shipping price or logic here
-    const total = subtotal + shipping;
-
-    document.querySelector('#subtotal td:last-child').textContent = `Rs. ${subtotal}`;
-    document.querySelector('#cart-add td:last-child strong').textContent = `Rs. ${total}`;
-  }
-
-  // Attach event listener to button
-  document.getElementById('add-to-cart-btn').addEventListener('click', function() {
-    addToCart(1, 'Green frock', 1000, 'images/product-imgs/i1.png');
-  });
-});
-
-
-// Event Listener for Checkout Button
-// document.querySelector('#adtocart').addEventListener('click', function() {
-//   if (cart.length === 0) {
-//     alert('Your cart is empty!');
-//   } else {
-//     console.log('Proceeding to checkout with the following items:', cart);
-//     // You can redirect to the checkout page or handle payment here
-//     // window.location.href = 'checkout.html'; // Example
-//   }
-// });
-
-  
-
-
-//   // g) Creating local backup of cart items.....
-//   // 1.Add Item to Cart:
-//   function addToCart(productId, quantity) {
-//     const userId = 1; // Replace with actual user ID from your authentication system
-
-//     fetch('/cart.php', {
-//         method: 'POST',
-//         body: new URLSearchParams({
-//             action: 'add',
-//             user_id: userId,
-//             product_id: productId,
-//             quantity: quantity
-//         }),
-//         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         if (data.success) {
-//             console.log('Product added to cart');
-//             renderCart(); // Update the cart display
-//         }
-//     });
-// }
-
-
-  

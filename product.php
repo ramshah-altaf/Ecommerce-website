@@ -78,7 +78,8 @@ if ($result->num_rows > 0) {
             <option>1</option>
           </select>
           <input type="number" value="1">
-          <button type="button" id="add-to-cart-btn" >Add to Cart</button>
+          <button type="button" id="add-to-cart-btn" data-id="1" data-name="Product Name" data-price="1000">Add to Cart</button>
+
           <h3>Product details</h3>
           <span><?php echo $row['description']; ?></span>
         </div>
