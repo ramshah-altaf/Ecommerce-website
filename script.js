@@ -34,16 +34,17 @@ window.onload = function() {
 
 
 
-// ..........SHOPPING CART FUNCTIONALITY.....
-// cart funtioning using local storage......
+// ..........SHOPPING CART FUNCTIONALITY....
+// Initialize cart from local storage
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Function to add an item to the cart
 function addToCart(productId, productName, productPrice) {
-    const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
+    // Convert productId and productPrice to proper types
+    const product = { id: parseInt(productId, 10), name: productName, price: parseFloat(productPrice), quantity: 1 };
 
-// Check if product already in cart
-    const existingProduct = cart.find(item => item.id === productId);
+    // Check if product already in cart
+    const existingProduct = cart.find(item => item.id === product.id);
     if (existingProduct) {
         existingProduct.quantity += 1;
     } else {
@@ -51,22 +52,28 @@ function addToCart(productId, productName, productPrice) {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart)); // Save to local storage
-    alert(productName + " added to cart!");
+    alert(`${productName} added to cart!`);
 }
 
-// Event listener for "Add to Cart" button (product page)
+// Function to handle button click
+function handleAddToCartClick() {
+    const productId = this.getAttribute('data-id');
+    const productName = this.getAttribute('data-name');
+    const productPrice = this.getAttribute('data-price');
+
+    addToCart(productId, productName, productPrice);
+}
+
+// Event listener for "Add to Cart" button
 const addToCartBtn = document.getElementById('add-to-cart-btn');
 if (addToCartBtn) {
-    addToCartBtn.addEventListener('click', function() {
-        const productId = this.getAttribute('data-id');
-        const productName = this.getAttribute('data-name');
-        const productPrice = this.getAttribute('data-price');
-        
-        addToCart(productId, productName, productPrice);
-    });
+    addToCartBtn.addEventListener('click', handleAddToCartClick);
+} else {
+    console.error('Add to Cart button not found'); // Error message if button is missing
 }
 
-// Function to display cart items on the cart page
+
+// Function to display cart items from local storage
 function displayCartItems() {
     const cartTableBody = document.getElementById('cartTableBody');
     if (!cartTableBody) return; // Ensure cartTableBody exists before continuing
@@ -76,7 +83,11 @@ function displayCartItems() {
     cart.forEach(product => {
         cartTableBody.innerHTML += `
             <tr>
-                <td><button class="remove-btn" data-id="${product.id}">Remove</button></td>
+                <td>
+                    <button class="remove-btn" data-id="${product.id}">
+                        Remove
+                    </button>
+                </td>
                 <td><img src="images/product-imgs/${product.id}.png" alt="${product.name}" width="50"></td>
                 <td>${product.name}</td>
                 <td>Rs.${product.price}</td>
@@ -90,7 +101,7 @@ function displayCartItems() {
     document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', function() {
             const productId = this.getAttribute('data-id');
-            removeFromCart(productId);
+            removeFromCart(productId); // Pass the correct productId to the function
         });
     });
 
@@ -106,23 +117,20 @@ function displayCartItems() {
 
 // Function to remove an item from the cart
 function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== parseInt(productId));
-    localStorage.setItem('cart', JSON.stringify(cart));
-    displayCartItems();
+    cart = cart.filter(item => item.id !== parseInt(productId, 10));
+    localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+    displayCartItems(); // Refresh cart display
 }
 
 // Function to update the quantity of a product
 function updateQuantity(productId, newQuantity) {
-    const product = cart.find(item => item.id === parseInt(productId));
+    const product = cart.find(item => item.id === parseInt(productId, 10));
     if (product) {
-        product.quantity = parseInt(newQuantity);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        displayCartItems(); // Update the cart UI
+        product.quantity = parseInt(newQuantity, 10);
+        localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+        displayCartItems(); // Refresh cart display
     }
 }
 
-// Call displayCartItems on cart page load
-if (document.getElementById('cartTableBody')) {
-    window.onload = displayCartItems;
-}
-
+// Call displayCartItems on page load
+window.onload = displayCartItems;
