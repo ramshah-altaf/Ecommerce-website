@@ -34,8 +34,7 @@ window.onload = function() {
 
 
 
-// ..........SHOPPING CART FUNCTIONALITY....
-// Initialize cart from local storage
+// ..........SHOPPING CART FUNCTIONALITY...
 // Initialize cart from local storage
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -61,6 +60,10 @@ function addToCart(productId, productName, productPrice, quantity) {
 
     localStorage.setItem('cart', JSON.stringify(cart)); // Save to local storage
     alert(`${productName} added to cart!`);
+
+    // Update cart display and totals
+    displayCartItems();
+    updateCartTotals();
 }
 
 // Function to handle button click
@@ -123,6 +126,9 @@ function displayCartItems() {
             updateQuantity(productId, newQuantity);
         });
     });
+    
+    // Update cart totals
+    updateCartTotals();
 }
 
 // Function to remove an item from the cart
@@ -130,6 +136,7 @@ function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== parseInt(productId, 10));
     localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
     displayCartItems(); // Refresh cart display
+    updateCartTotals(); // Update totals
 }
 
 // Function to update the quantity of a product
@@ -139,8 +146,36 @@ function updateQuantity(productId, newQuantity) {
         product.quantity = parseInt(newQuantity, 10);
         localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
         displayCartItems(); // Refresh cart display
+        updateCartTotals(); // Update totals
+    }
+}
+
+// Function to update cart totals in the #cart-add section
+function updateCartTotals() {
+    let cartSubtotal = 0;
+
+    // Calculate cart subtotal
+    cart.forEach(product => {
+        cartSubtotal += product.price * product.quantity;
+    });
+
+    // Assuming shipping is free, total is the same as subtotal
+    const cartTotal = cartSubtotal;
+
+    // Update the Cart Subtotal and Total in the #cart-add section
+    const subtotalElement = document.querySelector('#subtotal table tr:nth-child(1) td:nth-child(2)');
+    const totalElement = document.querySelector('#subtotal table tr:nth-child(3) td:nth-child(2)');
+
+    if (subtotalElement) {
+        subtotalElement.textContent = `Rs.${cartSubtotal.toFixed(2)}`;
+    }
+
+    if (totalElement) {
+        totalElement.textContent = `Rs.${cartTotal.toFixed(2)}`;
     }
 }
 
 // Call displayCartItems on page load
-window.onload = displayCartItems;
+window.onload = function() {
+    displayCartItems(); // Display existing cart items
+};
