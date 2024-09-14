@@ -46,46 +46,43 @@ if ($result->num_rows > 0) {
       <i id="bar" class="fas fa-outdent"></i>
     </div>
    </section>
-      <!-- DETAIL SECTION -->
-       <section id="proDetail">
-        
+      <!-- Product details -->
+    <section id="proDetail">
         <div class="sig-pro-img">
-          <?php
+            <?php
             $images = explode(',', $row['images']);
             $mainImage = $images[0]; // Assuming the first image is the main image
-          ?>
-          <img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%">
-
-          <div class="sm-img-grp">
-            <?php
-            foreach ($images as $image) {
-              echo '<div class="sm-img-col">';
-              echo '<img src="images/product-imgs/'.$image.'" alt="" class="smImg" width="100%">';
-              echo '</div>';
-            }
             ?>
-          </div>
+            <img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%">
+
+            <div class="sm-img-grp">
+                <?php
+                foreach ($images as $image) {
+                    echo '<div class="sm-img-col">';
+                    echo '<img src="images/product-imgs/'.$image.'" alt="" class="smImg" width="100%">';
+                    echo '</div>';
+                }
+                ?>
+            </div>
         </div>
         
         <div class="sig-pro-details">
-          <h6>Home/<?php echo $row['catagory']; ?></h6>
-          <h4><?php echo $row['name']; ?></h4>
-          <h3>Rs.<?php echo $row['price']; ?></h3>
-          <select>
-            <option>Select size</option>
-            <option>premature</option>
-            <option>0</option>
-            <option>1</option>
-          </select>
-          <input type="number" value="1">
-          <button id="add-to-cart-btn" data-id="1" data-name="Product Name" data-price="100">Add to Cart
-          </button>
+            <h6>Home/<?php echo $row['catagory']; ?></h6>
+            <h4><?php echo $row['name']; ?></h4>
+            <h3>Rs.<?php echo $row['price']; ?></h3>
+            <select>
+                <option>Select size</option>
+                <option>premature</option>
+                <option>0</option>
+                <option>1</option>
+            </select>
+            <input type="number" value="1" id="quantity-input">
+            <button id="add-to-cart-btn" data-id="<?php echo $row['id']; ?>" data-name="<?php echo $row['name']; ?>" data-price="<?php echo $row['price']; ?>">Add to Cart</button>
 
-
-          <h3>Product details</h3>
-          <span><?php echo $row['description']; ?></span>
+            <h3>Product details</h3>
+            <span><?php echo $row['description']; ?></span>
         </div>
-       </section>
+    </section>
 
        <!-- .....DISPLAY CARD SECTION -->
        <section id="display">

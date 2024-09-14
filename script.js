@@ -36,17 +36,25 @@ window.onload = function() {
 
 // ..........SHOPPING CART FUNCTIONALITY....
 // Initialize cart from local storage
+// Initialize cart from local storage
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Function to add an item to the cart
-function addToCart(productId, productName, productPrice) {
+function addToCart(productId, productName, productPrice, quantity) {
+    console.log('Add to Cart called with:', { productId, productName, productPrice, quantity }); // Debugging
+
     // Convert productId and productPrice to proper types
-    const product = { id: parseInt(productId, 10), name: productName, price: parseFloat(productPrice), quantity: 1 };
+    const product = { 
+        id: parseInt(productId, 10), 
+        name: productName, 
+        price: parseFloat(productPrice), 
+        quantity: parseInt(quantity, 10) 
+    };
 
     // Check if product already in cart
     const existingProduct = cart.find(item => item.id === product.id);
     if (existingProduct) {
-        existingProduct.quantity += 1;
+        existingProduct.quantity += product.quantity;
     } else {
         cart.push(product);
     }
@@ -57,11 +65,14 @@ function addToCart(productId, productName, productPrice) {
 
 // Function to handle button click
 function handleAddToCartClick() {
-    const productId = this.getAttribute('data-id');
-    const productName = this.getAttribute('data-name');
-    const productPrice = this.getAttribute('data-price');
+    // Get product details from data attributes
+    const productDetails = document.getElementById('add-to-cart-btn');
+    const productId = productDetails.getAttribute('data-id');
+    const productName = productDetails.getAttribute('data-name');
+    const productPrice = productDetails.getAttribute('data-price');
+    const quantity = document.getElementById('quantity-input').value || 1; // Default quantity to 1 if not specified
 
-    addToCart(productId, productName, productPrice);
+    addToCart(productId, productName, productPrice, quantity);
 }
 
 // Event listener for "Add to Cart" button
@@ -71,7 +82,6 @@ if (addToCartBtn) {
 } else {
     console.error('Add to Cart button not found'); // Error message if button is missing
 }
-
 
 // Function to display cart items from local storage
 function displayCartItems() {
@@ -101,7 +111,7 @@ function displayCartItems() {
     document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', function() {
             const productId = this.getAttribute('data-id');
-            removeFromCart(productId); // Pass the correct productId to the function
+            removeFromCart(productId);
         });
     });
 
