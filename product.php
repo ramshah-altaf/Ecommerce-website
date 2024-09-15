@@ -37,12 +37,13 @@ if ($result->num_rows > 0) {
         <li><a class="active" href="shop.php">Shop</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count"></span> <!-- Counter Element --></a></li>
         <a href="#" id="close"><i class="fas fa-times"></i></a>
       </ul>
     </div>
     <div id="mobile">
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+      <span id="cart-count-small">0</span>
       <i id="bar" class="fas fa-outdent"></i>
     </div>
    </section>
@@ -82,6 +83,7 @@ if ($result->num_rows > 0) {
             <h3>Product details</h3>
             <span><?php echo $row['description']; ?></span>
         </div>
+        
     </section>
 
        <!-- .....DISPLAY CARD SECTION -->

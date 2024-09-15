@@ -33,10 +33,36 @@ window.onload = function() {
 
 
 
-
-// ..........SHOPPING CART FUNCTIONALITY...
+// SHOPPING CART FUNTIONALITY STARTS HERE............
 // Initialize cart from local storage
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+
+
+// Function to update the cart counter
+function updateCartCounter() {
+    const cartCountElement = document.getElementById('cart-count');
+    const cartCountSmallElement = document.getElementById('cart-count-small');
+
+    // Calculate the total number of items in the cart
+    const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
+
+    // Update the large screen counter
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    } else {
+        console.error('Cart count element not found');
+    }
+
+    // Update the small screen counter
+    if (cartCountSmallElement) {
+        cartCountSmallElement.textContent = totalItems;
+    } else {
+        console.error('Small screen cart count element not found');
+    }
+}
+
+
 
 // Function to add an item to the cart
 function addToCart(productId, productName, productPrice, quantity) {
@@ -64,12 +90,18 @@ function addToCart(productId, productName, productPrice, quantity) {
     // Update cart display and totals
     displayCartItems();
     updateCartTotals();
+    updateCartCounter();
 }
 
 // Function to handle button click
 function handleAddToCartClick() {
     // Get product details from data attributes
     const productDetails = document.getElementById('add-to-cart-btn');
+    if (!productDetails) {
+        console.error('Add to Cart button data attributes not found');
+        return;
+    }
+
     const productId = productDetails.getAttribute('data-id');
     const productName = productDetails.getAttribute('data-name');
     const productPrice = productDetails.getAttribute('data-price');
@@ -89,7 +121,10 @@ if (addToCartBtn) {
 // Function to display cart items from local storage
 function displayCartItems() {
     const cartTableBody = document.getElementById('cartTableBody');
-    if (!cartTableBody) return; // Ensure cartTableBody exists before continuing
+    if (!cartTableBody) {
+        console.error('Cart table body not found');
+        return; // Ensure cartTableBody exists before continuing
+    }
 
     cartTableBody.innerHTML = ''; // Clear the cart table first
 
@@ -103,9 +138,9 @@ function displayCartItems() {
                 </td>
                 <td><img src="images/product-imgs/${product.id}.png" alt="${product.name}" width="50"></td>
                 <td>${product.name}</td>
-                <td>Rs.${product.price}</td>
+                <td>Rs.${product.price.toFixed(2)}</td>
                 <td><input type="number" value="${product.quantity}" min="1" class="quantity-input" data-id="${product.id}"></td>
-                <td>Rs.${product.price * product.quantity}</td>
+                <td>Rs.${(product.price * product.quantity).toFixed(2)}</td>
             </tr>
         `;
     });
@@ -126,9 +161,10 @@ function displayCartItems() {
             updateQuantity(productId, newQuantity);
         });
     });
-    
-    // Update cart totals
+
+    // Update cart totals and counter
     updateCartTotals();
+    updateCartCounter();
 }
 
 // Function to remove an item from the cart
@@ -137,6 +173,7 @@ function removeFromCart(productId) {
     localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
     displayCartItems(); // Refresh cart display
     updateCartTotals(); // Update totals
+    updateCartCounter(); // Update counter
 }
 
 // Function to update the quantity of a product
@@ -147,6 +184,7 @@ function updateQuantity(productId, newQuantity) {
         localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
         displayCartItems(); // Refresh cart display
         updateCartTotals(); // Update totals
+        updateCartCounter(); // Update counter
     }
 }
 
@@ -168,14 +206,19 @@ function updateCartTotals() {
 
     if (subtotalElement) {
         subtotalElement.textContent = `Rs.${cartSubtotal.toFixed(2)}`;
+    } else {
+        console.error('Subtotal element not found');
     }
 
     if (totalElement) {
         totalElement.textContent = `Rs.${cartTotal.toFixed(2)}`;
+    } else {
+        console.error('Total element not found');
     }
 }
 
 // Call displayCartItems on page load
 window.onload = function() {
     displayCartItems(); // Display existing cart items
+    updateCartCounter(); // Update cart counter on load
 };

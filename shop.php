@@ -28,12 +28,13 @@ $result = $conn->query($sql);
         <li><a class="active" href="shop.php">Shop</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span> <!-- Counter Element --></a></li>
         <a href="#" id="close"><i class="fas fa-times"></i></a>
       </ul>
     </div>
     <div id="mobile">
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+      <span id="cart-count-small">0</span>
       <i id="bar" class="fas fa-outdent"></i>
     </div>
    </section>
@@ -43,137 +44,20 @@ $result = $conn->query($sql);
         <img src="images/shop-banner5.png" alt="">
       </section>
 
-      <!-- .....DISPLAY CARD SECTION -->
-       <!-- <section id="display">
-        
-        <div class="dis-box"> class="dis-card">
-              <img src="images/cloth2.png" alt="">
-              <div class="des">
-               <h3>Maroon Frock</h3>
-               <div class="star">
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-               </div>
-               <h4>Rs.1000</h4>
-              </div>
-              <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-
-            <div class="dis-card">
-              <img src="images/cloth2.png" alt="">
-              <div class="des">
-               <h3>Maroon Frock</h3>
-               <div class="star">
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-               </div>
-               <h4>Rs.1000</h4>
-              </div>
-              <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-
-            <div class="dis-card">
-              <img src="images/cloth2.png" alt="">
-              <div class="des">
-               <h3>Maroon Frock</h3>
-               <div class="star">
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-               </div>
-               <h4>Rs.1000</h4>
-              </div>
-              <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-
-            <div class="dis-card">
-              <img src="images/cloth2.png" alt="">
-              <div class="des">
-               <h3>Maroon Frock</h3>
-               <div class="star">
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-               </div>
-               <h4>Rs.1000</h4>
-              </div>
-              <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-
-            <div class="dis-card">
-              <img src="images/cloth2.png" alt="">
-              <div class="des">
-               <h3>Maroon Frock</h3>
-               <div class="star">
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-               </div>
-               <h4>Rs.1000</h4>
-              </div>
-              <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-
-            <div class="dis-card">
-              <img src="images/cloth2.png" alt="">
-              <div class="des">
-               <h3>Maroon Frock</h3>
-               <div class="star">
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-               </div>
-               <h4>Rs.1000</h4>
-              </div>
-              <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-
-            <div class="dis-card">
-              <img src="images/cloth2.png" alt="">
-              <div class="des">
-               <h3>Maroon Frock</h3>
-               <div class="star">
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-                 <i class="fas fa-star"></i>
-               </div>
-               <h4>Rs.1000</h4>
-              </div>
-              <a href="#"><i class="fas fa-cart-shopping" id="cart"></i></a>
-            </div>
-        </div>
-       </section> -->
-
-       
+      <!-- .....DISPLAY CARD SECTION -->   
        <section id="display">
          <div class="dis-box">
            <?php while($row = $result->fetch_assoc()) { ?>
-
+          
           <div class="dis-card">
             <?php
               $images = explode(',', $row['images']);
               $mainImage = $images[1]; // Assuming the first image is the main image
             ?>
-            <img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%">
+             <a href="product.php?id=<?php echo $row['id']; ?>"><img src="images/product-imgs/<?php echo $mainImage; ?>" alt="" id="mainImg" width="100%"></a>
 
             <div class="des">
-               <h3><?php echo $row['name']; ?></h3>
+            <a href="product.php?id=<?php echo $row['id']; ?>"><h3><?php echo $row['name']; ?></h3></a>
                <div class="star">
                  <i class="fas fa-star"></i>
                  <i class="fas fa-star"></i>
@@ -183,13 +67,11 @@ $result = $conn->query($sql);
                </div>
                <h4>Rs.<?php echo $row['price']; ?></h4>
             </div>
-       
-            <a href="product.php?id=<?php echo $row['id']; ?>"><i class="fas fa-cart-shopping" id="cart"></i></a>
-
+           
+            
           </div>
-          
           <?php } ?>
-
+          
         </div>
       </section>
 
