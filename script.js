@@ -37,8 +37,6 @@ window.onload = function() {
 // Initialize cart from local storage
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-
-
 // Function to update the cart counter
 function updateCartCounter() {
     const cartCountElement = document.getElementById('cart-count');
@@ -61,8 +59,6 @@ function updateCartCounter() {
         console.error('Small screen cart count element not found');
     }
 }
-
-
 
 // Function to add an item to the cart
 function addToCart(productId, productName, productPrice, quantity) {
@@ -222,3 +218,8 @@ window.onload = function() {
     displayCartItems(); // Display existing cart items
     updateCartCounter(); // Update cart counter on load
 };
+
+
+
+
+// CHECKOUT FUNTIONALITY STARTS HERE........

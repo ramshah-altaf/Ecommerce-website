@@ -730,7 +730,7 @@ footer a{
     padding: 10px 5px 10px 15px;
     font-size: 15px;
 }
-#cart-sec table thead{
+#cart-sec table thead {
     border:1px solid palevioletred;
     border-left: none;
     border-right: none;
@@ -798,6 +798,50 @@ footer a{
     margin-left: 25%;
 }
 
+
+
+/* ................................. */
+/*CHECKOUT PAGE STYLING STARTS HERE */
+#checkout h1{
+    text-align: center;
+    padding: 5% 0;
+}
+#summary-table{
+    padding: 20px 30px;
+    width: 90%;
+    margin-left: 5%;
+    border-collapse: collapse;
+    white-space: nowrap;
+    table-layout: fixed;
+}
+#summary-table thead{
+    border:1px solid palevioletred;
+    border-left: none;
+    border-right: none;
+    background-color: #ebc1cd;
+}
+#summary-table td{
+    width: 200px;
+    text-align: center;
+    padding: 15px 0;
+    
+}
+#summary-table thead th{
+    padding: 18px 0;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.lil-table {
+    padding: 50px;
+    width: 70%;
+    margin-left: 14%;
+}
+.lil-table td{
+    line-height: 2;
+    border:1px solid palevioletred;
+}
 
 
 

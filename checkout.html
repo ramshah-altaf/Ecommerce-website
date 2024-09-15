@@ -3,88 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Checkout</title>
     <script src="https://kit.fontawesome.com/36f07399b2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-   <section id="header">
-    <a href="#"><img id="logo" src="images\logo.png" alt="logo"></a>
+    <section id="header">
+        <a href="index.html"><img id="logo" src="images\logo.png" alt="logo"></a>
+    
+        <div>
+          <ul id="navbar">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="shop.php">Shop</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>  <span id="cart-count"></span> <!-- Counter Element --></a></li>
+            <a href="#" id="close"><i class="fas fa-times"></i></a>
+          </ul>
+        </div>
+        <div id="mobile">
+          <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <span id="cart-count-small">0</span>
+          <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
 
-    <div>
-      <ul id="navbar">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.php">Shop</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li id="lg-bag"><a href="cart.html" class="active"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span> <!-- Counter Element --></a></li>
-        <a href="#" id="close"><i class="fas fa-times"></i></a>
-      </ul>
-    </div>
-    <div id="mobile">
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-      <span id="cart-count-small">0</span>
-      <i id="bar" class="fas fa-outdent"></i>
-    </div>
-   </section>
-
-       <!-- ......TOP BANNER SECTION -->
-      <section id="shop-banner">
-        <img src="images/cart-banner.png" alt="">
-      </section>
-
-      <!-- .......CART SECTION -->
-       <section id="cart-sec">
-          <table>
+<!-- CHECKOUT SECTION -->
+<section id="checkout">
+    <h1>Checkout</h1>
+    
+    <!-- Shopping Cart Summary -->
+    <div id="cart-summary">
+        <table id="summary-table">
             <thead>
                 <tr>
-                    <td>Remove</td>
-                    <td>Image</td>
-                    <td>Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Subtotal</td>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
                 </tr>
             </thead>
-            
-            <tbody id="cartTableBody" >
-              
+            <tbody id="checkoutTableBody">
+                <!-- Cart items will be dynamically added here -->
             </tbody>
-          </table>
-       </section>
+        </table>
 
-       <section id="cart-add">
-        <div id="coupon">
-            <h3>APPLY COUPON</h3>
-            <div>
-                <input type="text" placeholder="Enter Your Coupon">
-                <button>APPLY</button>
-            </div>
-        </div>
-        
-        <div id="subtotal">
-            <h3>Cart Totals</h3>
-            <table>
+        <!-- Subtotal and Charges Section -->
+        <div id="checkout-summary" class="lil-table">
+            <table id="summary-table">
                 <tr>
-                    <td>Cart Subtotal</td>
-                    <td>Rs.2000</td>
+                    <td>Subtotal:</td>
+                    <td id="checkout-subtotal-amount">Rs.0.00</td>
                 </tr>
                 <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
+                    <td>Delivery Charges:</td>
+                    <td id="delivery-charges">Rs.0.00</td>
                 </tr>
                 <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>Rs.3000</strong></td>
+                    <td>Taxes:</td>
+                    <td id="taxes-amount">Rs.0.00</td>
+                </tr>
+                <tr>
+                    <td><strong>Total:</strong></td>
+                    <td id="grand-total"><strong>Rs.0.00</strong></td>
                 </tr>
             </table>
-            <a href="checkout.html"><button id="checkout-btn">Proceed to Checkout</button></a>
         </div>
-       </section>
-      
+    </div>
+</section>
 
-       <!-- .....FOOTER SECTION -->
-       <footer>
+<!-- FOOTER SECTION...... -->
+    <footer>
         <div class="footer-container">
           
         <div class="abo-con">
@@ -128,9 +117,7 @@
           <p>Designed by Ramshah Altaf Khan.</p>
         </div>
       </footer>
-      
-   
     
-    <script src="script.js"></script>
+    <script src="checkout.js"></script> 
 </body>
 </html>
