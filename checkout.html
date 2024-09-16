@@ -127,7 +127,10 @@
   </form>
 </div>
 
-<!-- Payment section -->
+</section>
+
+
+<!-- PAYMENT SECTION-->
 <section id="payment-section">
   <h2>Payment</h2>
   <!-- Add your payment form or information here -->
@@ -135,7 +138,17 @@
 </section>
 
 
+<!-- ORDER REVIEW SECTION -->
+<section id="order-review">
+  
+  <div id="order-review-summary">
+    <p><strong>Your final bill will be </strong> <span id="review-grand-total">Rs.0.00</span></p>
+    <p><strong>Estimated Delivery Date:</strong> <span id="delivery-date">N/A</span></p>
+  </div>
 </section>
+
+<button type="button" id="place-order">Place Order</button>
+
 
 <!-- FOOTER SECTION...... -->
     <footer>
@@ -181,35 +194,8 @@
           <p>&copy; 2024 Rinky Tinks. All Rights Reserved.</p>
           <p>Designed by Ramshah Altaf Khan.</p>
         </div>
-      </footer>
+    </footer>
     
-      <script>
-        document.getElementById('continue-to-payment').addEventListener('click', function() {
-            // Gather form data
-            const formData = new FormData(document.getElementById('shipping-form'));
-        
-            // Create an AJAX request
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'process_checkout.php', true);
-        
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    // Show a success alert
-                    alert('Address information saved successfully.');
-        
-                    // Navigate to the payment section
-                    document.getElementById('payment-section').scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    // Show an error alert
-                    alert('An error occurred while saving the address information.');
-                }
-            };
-        
-            // Send the form data
-            xhr.send(formData);
-        });
-      </script>
-          
     <script src="checkout.js"></script> 
 </body>
 </html>

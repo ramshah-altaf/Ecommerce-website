@@ -806,6 +806,10 @@ footer a{
     text-align: center;
     padding: 5% 0;
 }
+#checkout h2{
+    
+    padding: 2%;
+}
 #summary-table{
     padding: 20px 30px;
     width: 90%;
@@ -844,51 +848,84 @@ footer a{
 
   /* Shipping and Billing Section */
 #shipping-section {
-    margin-top: 20px;
+    margin-top: 50px;
+    
 }
 #shipping-section form {
     display: flex;
     flex-direction: column;
+    margin: 2% 10%;
+    width: 80%;
     gap: 20px;
+    
+    
 }
 #shipping-section fieldset {
-    border: 1px solid #ccc;
-    padding: 10px;
+    border: 1px solid palevioletred;
+    padding: 5%;
+    
 }
 #shipping-section legend {
     font-weight: bold;
 }
 #shipping-section label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 #shipping-section input {
-    width: 100%;
+    width: 90%;
     padding: 8px;
-    margin-bottom: 10px;
+    margin: 5px 0px 20px 40px;
     box-sizing: border-box;
 }
 #save-for-later {
     margin-top: 20px;
-    background-color: #f0f0f0;
+    background-color: #f6d4eb;
     padding: 10px;
     border: none;
     cursor: pointer;
+    width: 30%;
+    margin-left: 35%;
+    transition: 1s ease;
 }
 #save-for-later:hover {
-    background-color: #ccc;
+    background-color:#a55e72;
+    transform: scale(1.1);
+    color: wheat;
 }
-button[type="submit"] {
-    background-color: #4CAF50;
+#continue-to-payment {
+    background-color: palevioletred;
+    margin-left: 35%;
     color: white;
     padding: 10px;
     border: none;
     cursor: pointer;
+    width: 30%;
+    transition: 1s ease;
 }
-button[type="submit"]:hover {
-    background-color: #45a049;
+#continue-to-payment:hover {
+    background-color:#680521;
+    color: wheat;
+    transform: scale(1.1);
 }
 
+
+/* review section */
+#order-review-summary{
+    background-color: #780d2b;
+    color: wheat;
+    width: 50%;
+    margin-left: 25%;
+    padding: 2%;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 5%;
+}
+#review-grand-total,#delivery-date{
+    font-weight: 700;
+    text-decoration: underline;
+    
+}
 
 
 

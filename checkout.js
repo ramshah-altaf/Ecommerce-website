@@ -69,8 +69,69 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 // Redirect 'Save for Later' button to signup page
 document.getElementById('save-for-later').addEventListener('click', function() {
     window.location.href = 'signup.html'; // Adjust this link when you have the signup page
 });
+
+
+
+// Scrolling to paymen t section 
+document.getElementById('continue-to-payment').addEventListener('click', function() {
+    // Gather form data
+    const formData = new FormData(document.getElementById('shipping-form'));
+
+    // Create an AJAX request
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'process_checkout.php', true);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Show a success alert
+            alert('Address information saved successfully.');
+
+            // Navigate to the payment section
+            document.getElementById('payment-section').scrollIntoView({ behavior: 'smooth' });
+        } else {
+            // Show an error alert
+            alert('An error occurred while saving the address information.');
+        }
+    };
+
+    // Send the form data
+    xhr.send(formData);
+});
+
+
+
+
+
+
+// REVIEW SECTION...........
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to calculate the delivery date
+    function calculateDeliveryDate() {
+      const today = new Date();
+      const deliveryDate = new Date(today.setDate(today.getDate() + 7)); // Add 7 days
+      return deliveryDate.toLocaleDateString(); // Format the date
+    }
+
+    // Function to calculate the grand total (fetch from your checkout summary)
+    function calculateGrandTotal() {
+      const subtotal = parseFloat(document.getElementById('checkout-subtotal-amount').innerText.replace('Rs.', ''));
+      const deliveryCharges = parseFloat(document.getElementById('delivery-charges').innerText.replace('Rs.', ''));
+      const taxes = parseFloat(document.getElementById('taxes-amount').innerText.replace('Rs.', ''));
+      return subtotal + deliveryCharges + taxes;
+    }
+
+    // Set the calculated values to the review section
+    document.getElementById('review-grand-total').innerText = `Rs.${calculateGrandTotal().toFixed(2)}`;
+    document.getElementById('delivery-date').innerText = calculateDeliveryDate();
+  });
+
+
+
+
+
+
+//  CONFIRMATION PAGE.....
