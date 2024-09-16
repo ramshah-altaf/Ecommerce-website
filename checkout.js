@@ -45,3 +45,32 @@ document.addEventListener("DOMContentLoaded", function() {
     grandTotalElement.textContent = `Rs.${grandTotal.toFixed(2)}`;
 });
 
+
+
+
+
+
+// // .......SHIPPING AND BILLING SECTION.......
+ // JavaScript to handle the checkbox functionality
+ document.getElementById('same-address').addEventListener('change', function() {
+    const isChecked = this.checked;
+    const billingFields = document.getElementById('billing-fields');
+    if (isChecked) {
+        billingFields.style.display = 'none';
+        // Copy shipping values to billing fields
+        document.getElementById('billing-name').value = document.getElementById('shipping-name').value;
+        document.getElementById('billing-address').value = document.getElementById('shipping-address').value;
+        document.getElementById('billing-city').value = document.getElementById('shipping-city').value;
+        document.getElementById('billing-zip').value = document.getElementById('shipping-zip').value;
+        document.getElementById('billing-country').value = document.getElementById('shipping-country').value;
+    } else {
+        billingFields.style.display = 'block';
+    }
+});
+
+
+
+// Redirect 'Save for Later' button to signup page
+document.getElementById('save-for-later').addEventListener('click', function() {
+    window.location.href = 'signup.html'; // Adjust this link when you have the signup page
+});

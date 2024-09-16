@@ -32,8 +32,8 @@
 <section id="checkout">
     <h1>Checkout</h1>
     
-    <!-- Shopping Cart Summary -->
-    <div id="cart-summary">
+<!-- Shopping Cart Summary Section............-->
+<div id="cart-summary">
         <table id="summary-table">
             <thead>
                 <tr>
@@ -69,7 +69,72 @@
                 </tr>
             </table>
         </div>
-    </div>
+</div>
+
+<!-- Shipping and Billing Section................ -->
+<div id="shipping-section">
+  <h2>Shipping and Billing Details</h2>
+  <form id="shipping-form" action="process_checkout.php" method="post">
+      <!-- Shipping Address -->
+      <fieldset>
+          <legend>Shipping Address</legend>
+          <label for="shipping-name">Full Name:</label>
+          <input type="text" id="shipping-name" name="shipping_name" required>
+
+          <label for="shipping-address">Address:</label>
+          <input type="text" id="shipping-address" name="shipping_address" required>
+
+          <label for="shipping-city">City:</label>
+          <input type="text" id="shipping-city" name="shipping_city" required>
+
+          <label for="shipping-zip">ZIP Code:</label>
+          <input type="text" id="shipping-zip" name="shipping_zip" required>
+
+          <label for="shipping-country">Country:</label>
+          <input type="text" id="shipping-country" name="shipping_country" required>
+      </fieldset>
+
+      <!-- Billing Address -->
+      <fieldset>
+          <legend>Billing Address</legend>
+          <input type="checkbox" id="same-address" name="same_address">
+          <label for="same-address">Billing address is the same as shipping address</label>
+
+          <div id="billing-fields">
+              <label for="billing-name">Full Name:</label>
+              <input type="text" id="billing-name" name="billing_name">
+
+              <label for="billing-address">Address:</label>
+              <input type="text" id="billing-address" name="billing_address">
+
+              <label for="billing-city">City:</label>
+              <input type="text" id="billing-city" name="billing_city">
+
+              <label for="billing-zip">ZIP Code:</label>
+              <input type="text" id="billing-zip" name="billing_zip">
+
+              <label for="billing-country">Country:</label>
+              <input type="text" id="billing-country" name="billing_country">
+          </div>
+      </fieldset>
+
+      <!-- Save for Later Button -->
+      <button type="button" id="save-for-later">Save for Later</button>
+
+      <!-- Submit Button -->
+      <button type="button" id="continue-to-payment">Continue to Payment</button>
+
+  </form>
+</div>
+
+<!-- Payment section -->
+<section id="payment-section">
+  <h2>Payment</h2>
+  <!-- Add your payment form or information here -->
+  <p>Payment details go here.</p>
+</section>
+
+
 </section>
 
 <!-- FOOTER SECTION...... -->
@@ -118,6 +183,33 @@
         </div>
       </footer>
     
+      <script>
+        document.getElementById('continue-to-payment').addEventListener('click', function() {
+            // Gather form data
+            const formData = new FormData(document.getElementById('shipping-form'));
+        
+            // Create an AJAX request
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'process_checkout.php', true);
+        
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Show a success alert
+                    alert('Address information saved successfully.');
+        
+                    // Navigate to the payment section
+                    document.getElementById('payment-section').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // Show an error alert
+                    alert('An error occurred while saving the address information.');
+                }
+            };
+        
+            // Send the form data
+            xhr.send(formData);
+        });
+      </script>
+          
     <script src="checkout.js"></script> 
 </body>
 </html>

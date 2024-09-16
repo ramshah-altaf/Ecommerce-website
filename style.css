@@ -832,7 +832,6 @@ footer a{
     font-weight: 700;
     text-transform: uppercase;
 }
-
 .lil-table {
     padding: 50px;
     width: 70%;
@@ -842,6 +841,54 @@ footer a{
     line-height: 2;
     border:1px solid palevioletred;
 }
+
+  /* Shipping and Billing Section */
+#shipping-section {
+    margin-top: 20px;
+}
+#shipping-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#shipping-section fieldset {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+#shipping-section legend {
+    font-weight: bold;
+}
+#shipping-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+#shipping-section input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+#save-for-later {
+    margin-top: 20px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+#save-for-later:hover {
+    background-color: #ccc;
+}
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
 
 
 
